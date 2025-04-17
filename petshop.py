@@ -14,6 +14,8 @@ class Cliente:
 
     def adicionar_pet(self, pet):
         self.pets.append(pet)
+    def remover_pet(self, nome_pet):
+        self.pets = [pet for pet in self.pets if pet.nome != nome_pet]
 
     def listar_pets(self):
         return [str(pet) for pet in self.pets]
