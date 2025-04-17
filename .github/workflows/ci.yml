@@ -1,30 +1,30 @@
-name: Python CI
+name: CI - Testes e Qualidade de Código
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, atividade-formativa-semana-2 ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
+    - name: Checkout do código
+      uses: actions/checkout@v3
 
-      - name: Instalar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+    - name: Configura Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
-      - name: Instalar dependências
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest
+    - name: Instala dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
 
-      - name: Rodar testes
-        run: pytest
+    - name: Roda os testes com pytest
+      run: |
+        pytest
+
