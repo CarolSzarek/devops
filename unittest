@@ -1,0 +1,37 @@
+import unittest
+from petshop import Pet, Cliente  # Ajuste o nome das classes conforme necessário
+
+class TestPetshop(unittest.TestCase):
+    
+    def test_adicionar_pet(self):
+        cliente = Cliente("Carlos")
+        pet = Pet("Fido", "Cachorro", 2)
+        cliente.adicionar_pet(pet)
+        self.assertIn(pet, cliente.pets)
+    
+    def test_remover_pet(self):
+        cliente = Cliente("Carlos")
+        pet = Pet("Fido", "Cachorro", 2)
+        cliente.adicionar_pet(pet)
+        cliente.remover_pet(pet)
+        self.assertNotIn(pet, cliente.pets)
+    
+    def test_listar_pets(self):
+        cliente = Cliente("Carlos")
+        pet1 = Pet("Fido", "Cachorro", 2)
+        pet2 = Pet("Miau", "Gato", 1)
+        cliente.adicionar_pet(pet1)
+        cliente.adicionar_pet(pet2)
+        pets = cliente.listar_pets()
+        self.assertEqual(pets, [pet1, pet2])
+    
+    def test_validar_pet(self):
+        pet = Pet("Fido", "Cachorro", 2)
+        self.assertTrue(pet.validar())
+    
+    def test_cliente_sem_pets(self):
+        cliente = Cliente("Carlos")
+        self.assertEqual(cliente.listar_pets(), [])
+        
+if __name__ == '__main__':
+    unittest.main()
