@@ -1,7 +1,7 @@
 import unittest
 from petshop import Cliente, Pet
-#.
 class TestPetshop(unittest.TestCase):
+# Testes atualizados para CI/CD
 
     def test_criar_cliente(self):
         cliente = Cliente("João", "joao@email.com")
