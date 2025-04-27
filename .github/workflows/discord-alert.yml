@@ -1,0 +1,20 @@
+name: Alerta no Discord
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar alerta para o Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🚨 Novo push ou merge no branch main por **${{ github.actor }}** no repositório **${{ github.repository }}**\"}" \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}

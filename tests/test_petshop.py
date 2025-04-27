@@ -1,5 +1,8 @@
 import unittest
+tests-devops
 from petshop import Pet, Cliente  # ajuste o import conforme o seu projeto
+from petshop import Pet, Cliente  # ajuste o import conforme seu projeto
+main
 
 class TestPetshop(unittest.TestCase):
 
