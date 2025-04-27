@@ -1,4 +1,5 @@
 name: CI - Testes e Qualidade de Código
+# Atualização para forçar execução dos testes
 
 on:
   push:
