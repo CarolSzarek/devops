@@ -25,6 +25,7 @@ jobs:
         pip install pytest
 
     - name: Roda os testes com pytest
-      run: |
-        pytest tests/
+  run: |
+    pytest tests/
+
 
