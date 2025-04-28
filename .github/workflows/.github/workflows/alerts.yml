@@ -1,0 +1,26 @@
+name: Alerta no Discord
+
+on:
+  pull_request:
+    types: [opened]
+  push:
+    branches: [main]
+
+jobs:
+  discord-alert:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Alerta de nova Pull Request
+        if: github.event_name == 'pull_request'
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"content\": \"📬 Nova Pull Request criada por **${{ github.actor }}** no repositório **${{ github.repository }}**\"}" \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Alerta de build com sucesso
+        if: github.event_name == 'push' && success()
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"content\": \"✅ Build finalizada com sucesso após push no branch **main** por **${{ github.actor }}**.\"}" \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
