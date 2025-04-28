@@ -36,4 +36,5 @@ class TestPetshop(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+# Atualização para corrigir erro de workflow e forçar execução dos testes
 
